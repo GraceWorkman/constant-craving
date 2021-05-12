@@ -18,7 +18,7 @@ function handleIndex(request, response) {
   var battlesnakeInfo = {
     apiversion: '1',
     author: 'William Workman',
-    color: '#FF9760', //00BD99
+    color: '#FF9760', //#00BD99
     head: 'silly',
     tail: 'bolt'
   }
@@ -38,6 +38,7 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
+  console.log(gameData);
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
