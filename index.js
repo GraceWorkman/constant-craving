@@ -27,6 +27,9 @@ function handleIndex(request, response) {
 
 function handleStart(request, response) {
   var gameData = request.body
+  const gameInfo = request.body.game
+  //const boardWidth = request.body.
+  //const bordHeight = 
 
   console.log('START')
   response.status(200).send('ok')
@@ -38,7 +41,7 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
-  console.log(gameData);
+  console.log(gameInfo);
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
