@@ -27,9 +27,6 @@ function handleIndex(request, response) {
 
 function handleStart(request, response) {
   var gameData = request.body
-  const gameInfo = request.body.game
-  //const boardWidth = request.body.
-  //const bordHeight = 
 
   console.log('START')
   response.status(200).send('ok')
