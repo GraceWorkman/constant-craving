@@ -39,9 +39,9 @@ function handleMove(request, response) {
 
   var possibleMoves = ['up', 'down', 'left', 'right']
   var viableMoves = possibleMoves
-  //var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
-  console.log(boardHeight + ", " + boardWidth + ", " + viableMoves);
+  console.log(boardHeight + ", " + boardWidth + ", " + viableMoves)
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
