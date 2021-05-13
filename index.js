@@ -52,7 +52,7 @@ function handleMove(request, response) {
   }
 
   function checkBounds(array) {
-    arrayRemove(possibleMoves,'up')
+    return arrayRemove(possibleMoves,'up')
   }
 
   /* Logic path */
