@@ -33,12 +33,26 @@ function handleStart(request, response) {
 }
 
 function handleMove(request, response) {
-  var gameData = request.body
-  var boardWidth = gameData.board.width
-  var boardHeight = gameData.board.height
+  var gameData = request.body // Game details
+  var boardWidth = gameData.board.width // Horizontals bounds
+  var boardHeight = gameData.board.height // Vetical bounds
+  var posX = gameData.you.head.x // Head X coordinate
+  var posY = gameData.you.head.y // Head Y coordinate
+  var possibleMoves = ['up', 'down', 'left', 'right'] // All possible moves
+  var viableMoves = possibleMoves // Actual viable moves
 
-  var possibleMoves = ['up', 'down', 'left', 'right']
-  var viableMoves = possibleMoves
+  // program to remove item from an array
+  function arrayRemove(array, item) {
+    let newArray = [];
+    for( let i = 0; i < array.length; i++) {
+        if(array[i] !== item) {
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+  }
+
+  console.log( arrayRemove(possibleMoves, 'down') )
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
   console.log(boardHeight + ", " + boardWidth + ", " + viableMoves)
