@@ -51,15 +51,15 @@ function handleMove(request, response) {
     return newArray;
   }
 
-  function checkBounds() {
-    if(posX <= 0){ arrayRemove(possibleMoves,'left'); }
-    if(posX >= boardWidth){ arrayRemove(possibleMoves,'right'); }
-    if(posY <= 0){ arrayRemove(possibleMoves,'down'); }
-    if(posX >= boardHeight){ arrayRemove(possibleMoves,'up'); }
+  function checkBounds(moveArray,posX,posY,boundX,boundY) {
+    if(posX <= 0){ arrayRemove(moveArray,'left'); }
+    if(posX >= boundX){ arrayRemove(moveArray,'right'); }
+    if(posY <= 0){ arrayRemove(moveArray,'down'); }
+    if(posX >= boundY){ arrayRemove(moveArray,'up'); }
   }
 
   /* Logic path */
-  checkBounds()
+  checkBounds(possibleMoves,posX,posY,boardWidth,boardHeight)
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
   console.log(possibleMoves)
