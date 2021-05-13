@@ -39,7 +39,6 @@ function handleMove(request, response) {
   var posX = gameData.you.head.x // Head X coordinate
   var posY = gameData.you.head.y // Head Y coordinate
   var possibleMoves = ['up', 'down', 'left', 'right'] // All possible moves
-  var viableMoves = possibleMoves // Actual viable moves
 
   /* Functions */
   function arrayRemove(array, item) {
@@ -53,16 +52,17 @@ function handleMove(request, response) {
   }
 
   function checkBounds() {
-    if(posX <= 0){ arrayRemove(viableMoves,'left'); }
-    if(posX >= boardWidth){ arrayRemove(viableMoves,'right'); }
-    if(posY <= 0){ arrayRemove(viableMoves,'down'); }
-    if(posX >= boardHeight){ arrayRemove(viableMoves,'up'); }
+    if(posX <= 0){ arrayRemove(possibleMoves,'left'); }
+    if(posX >= boardWidth){ arrayRemove(possibleMoves,'right'); }
+    if(posY <= 0){ arrayRemove(possibleMoves,'down'); }
+    if(posX >= boardHeight){ arrayRemove(possibleMoves,'up'); }
   }
 
   /* Logic path */
   checkBounds()
-  var move = viableMoves[Math.floor(Math.random() * viableMoves.length)]
+  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
+  console.log(possibleMoves)
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
