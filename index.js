@@ -51,13 +51,13 @@ function handleMove(request, response) {
     return newArray;
   }
 
-  function checkBounds() {
+  function checkBounds(array) {
     arrayRemove(possibleMoves,'up')
   }
 
   /* Logic path */
   console.log(possibleMoves)
-  checkBounds()
+  checkBounds(possibleMoves)
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
 
   console.log(possibleMoves)
