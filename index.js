@@ -41,7 +41,7 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right'] // All possible moves
   var viableMoves = possibleMoves // Actual viable moves
 
-  // program to remove item from an array
+  /* Functions */
   function arrayRemove(array, item) {
     let newArray = [];
     for( let i = 0; i < array.length; i++) {
@@ -52,10 +52,17 @@ function handleMove(request, response) {
     return newArray;
   }
 
-  console.log( arrayRemove(possibleMoves, 'down') )
-  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+  function checkBounds() {
+    if(posX <= 0){ arrayRemove(viableMoves,'left'); }
+    if(posX >= boardWidth){ arrayRemove(viableMoves,'right'); }
+    if(posY <= 0){ arrayRemove(viableMoves,'down'); }
+    if(posX >= boardHeight){ arrayRemove(viableMoves,'up'); }
+  }
 
-  console.log(boardHeight + ", " + boardWidth + ", " + viableMoves)
+  /* Logic path */
+  checkBounds()
+  var move = viableMoves[Math.floor(Math.random() * viableMoves.length)]
+
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
